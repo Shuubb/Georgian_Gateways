@@ -1,0 +1,15 @@
+.bannerContainer {
+  width: calc(100vw + 5px);
+  height: 60vh;
+  overflow: hidden;
+  background-size: cover;
+  background-position-y: center;
+  background-position-x: -5px;
+}
+
+.productsContainer {
+  display: grid;
+  grid-gap: 20px;
+  width: 100%;
+  margin: 0;
+}

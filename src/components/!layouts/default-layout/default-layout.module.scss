@@ -1,0 +1,11 @@
+.logo {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  transition: opacity 0.15s;
+  z-index: 100;
+
+  &:hover {
+    opacity: 0 !important;
+  }
+}
