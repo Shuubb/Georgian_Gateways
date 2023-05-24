@@ -1,22 +1,32 @@
 import { useEffect, useState } from "react";
-import FadeInDiv from "../!animations/fadeInDiv";
 import styles from "./product.module.scss";
+import Logo from "../../assets/Logo.svg";
 
 interface ProductProps {
-  product: Product;
+  product: ProductType;
   index: number;
+  title?: string;
+  article?: string;
+  imageDataURL?: string;
 }
 
-interface Product {
-  name: string;
-  imageDataURL: string;
+export interface ProductType {
+  title?: string;
+  article?: string;
+  imageDataURL?: string;
 }
+
+Product.defaultProps = {
+  product: {
+    title: "yep",
+    article: "yepyep",
+    imageDataURL: Logo,
+  },
+};
 
 export default function Product(props: ProductProps) {
   const [align, setAlign] = useState("bottom");
   const [reverseAlign, setReverseAlign] = useState("top");
-  const product: Product = props.product;
-  const { name, imageDataURL } = product;
 
   useEffect(() => {
     if (window.innerWidth > 976) {
@@ -45,52 +55,40 @@ export default function Product(props: ProductProps) {
   }, []);
 
   const imageComp = (
-    <div className={styles.imageContainer}>
+    <div className={styles.imageContainer} key={props.index + "imageComp"}>
       <div
         style={{
-          backgroundImage: `url(${imageDataURL})`,
+          backgroundImage: `url(${props.product.imageDataURL})`,
         }}
         className={styles.cinematicBackground}
       ></div>
-      <div
-        style={{
-          backgroundImage: `url(${imageDataURL})`,
-        }}
-        className={styles.image}
-      />
+      <div className={styles.imageWrapper}>
+        <div
+          style={{
+            backgroundImage: `url(${props.product.imageDataURL})`,
+          }}
+          className={styles.image}
+        ></div>
+      </div>
     </div>
   );
 
   const textComp = (
     <div
       className={styles.textContainer}
+      key={props.index + "textComp"}
       style={{
         background: `linear-gradient(to ${align},  transparent, ivory 70%)`,
       }}
     >
-      <h1>Some Header!</h1>
-      <p>
-        election campaign time, and Rahul Gandhi, the Nehru-Gandhi heir and the
-        Congress party’s prime ministerial candidate, was on a tour of Bihar and
-        one of India’s new states, Jharkhand. It was a potentially historic day:
-        Gandhi was coming to address a rally at a fairground barely ten
-        kilometres away. As we waited and waited along with thousands of others,
-        looking to the sky for any sight of the haloed helicopter, Prasad told
-        me Gandhi would be wasting his time. The region’s insurgent youth wanted
-        opportunities, not the blessings of a charming dynast. They had made
-        their choice. It was going to be Gandhi’s rival, Bharatiya Janata
-        Party’s Narendra Modi, a man who had promised them things that mattered:
-        jobs
-      </p>
+      <h1>{props.product.title}</h1>
+      <p>{props.product.article}</p>
     </div>
   );
 
   return (
-    <FadeInDiv
-      className={styles.container}
-      style={{ justifySelf: reverseAlign }}
-    >
+    <div className={styles.container} style={{ justifySelf: reverseAlign }}>
       {align == "left" ? [textComp, imageComp] : [imageComp, textComp]}
-    </FadeInDiv>
+    </div>
   );
 }

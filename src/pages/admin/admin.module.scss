@@ -1,0 +1,47 @@
+.productsContainer {
+  height: 500px;
+}
+
+form {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+
+  input[type="file"] {
+    display: none;
+  }
+
+  input,
+  textarea,
+  button {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+  }
+
+  * {
+    display: block;
+  }
+
+  button {
+    background-color: aquamarine;
+    padding: 5px 10px;
+  }
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.fcAddImage {
+  height: 45px;
+  width: auto;
+  padding-bottom: 5px;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

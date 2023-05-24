@@ -1,16 +1,18 @@
-import FadeInDiv from "../!animations/fadeInDiv";
 import styles from "./nav-bar.module.scss";
 
-const links = [{ path: "/sad", name: "Home" }];
+const links = [
+  { path: "/", name: "Home" },
+  { path: "/admin", name: "Admin" },
+];
 
 export default function NavBar() {
   return (
     <div className={styles.container}>
       <div>
         {links.map((link, index) => (
-          <FadeInDiv element="a" href={link.path} key={`${index}Link`}>
+          <a href={link.path} key={`${index}Link`}>
             {link.name}
-          </FadeInDiv>
+          </a>
         ))}
       </div>
 

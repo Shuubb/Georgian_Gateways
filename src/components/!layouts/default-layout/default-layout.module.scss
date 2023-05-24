@@ -9,3 +9,22 @@
     opacity: 0 !important;
   }
 }
+
+footer {
+}
+
+.infoContainer {
+  display: flex;
+  padding: 10px;
+}
+
+.socialMediaLinksContainer {
+  a {
+    color: black;
+    font-size: 2rem;
+
+    &:hover {
+      color: green;
+    }
+  }
+}

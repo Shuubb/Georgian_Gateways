@@ -9,23 +9,55 @@ body {
   overflow: hidden;
 }
 
-main {
+main,
+footer {
   margin: 0 5%;
 }
 
 a {
   text-decoration: none;
-  color: white;
-  transition: font-size 0.3s ease-in-out;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease-in-out;
 
   &:hover {
-    font-size: 18px;
+    color: blue;
   }
 }
 
-@media all and (max-width: 700px) {
+.fadeIn,
+body {
+  animation: fadeIn 2s ease 0s 1 forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.shakeIt {
+  animation: shake 2s ease 0s 1 forwards;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(-10px, 0);
+  }
+  50% {
+    transform: translate(10px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@media all and (max-width: 900px) {
   html {
-    font: normal 200 12px/1.5 Poppins;
+    font: normal 200 16px/1.5 Poppins;
   }
   body {
     text-align: center;
